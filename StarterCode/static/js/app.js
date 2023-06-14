@@ -142,7 +142,9 @@ function buildDemo(sample) {
         var metaData = data.metadata;
         // function to pull bacteria id data from json and assign it to the buildDemo function input
         var metaDataSample = metaData.filter(row => row.id == sample);
-        demo.selectAll("p").remove();
+        // clear the demo between each selection
+        demo.html("");
+        // function to loops through dataset and populate demo info table
         metaDataSample.forEach((row) => {
             for (const [key, value] of Object.entries(row)) {
                 demo.append("p").text(`${key}: ${value}`);
